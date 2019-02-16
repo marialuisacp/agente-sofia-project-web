@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Agente Sofia </title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div id="header">
+      <img src="img/ag_sofia.png" class="logo" alt="">
+      <div class="menu">
+        <a href="about.html">
+          Sobre o projeto
+        </a>
+      </div>
+    </div>
+    <div id="map"></div>
+    <div id="detail">
+      <h2> Teste Título    </h2>
+      <p>
+        Uluru, also referred to as Ayers Rock, is a large sandstone rock formation in the southern part of the Northern Territory, central Australia. It lies 335 km (208 mi) south west of the nearest large town, Alice Springs; 450 km (280 mi) by road. Kata Tjuta and Uluru are the two major features of the Uluru - Kata Tjuta National Park. Uluru is sacred to the Pitjantjatjara and Yankunytjatjara, the Aboriginal people of the area. It has many springs, waterholes, rock caves and ancient paintings. Uluru is listed as a World Heritage Site.
+        Attribution: Uluru, https://en.wikipedia.org/w/index.php?title=Uluru (last visited June 22, 2009).
+      </p>
+    </div>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="util.js"></script>
+    <script> 
+      var map;
+      var image = 'img/markerdh.png';
+
+      function initMap() {
+        var style = getStyleMap();
+        var styledMapType = new google.maps.StyledMapType(style);
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -23.547122, lng: -46.634602},
+          zoom: 8
+        });
+        map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
+
+        d3.json('escolas.json', function(data) {
+          setMarkers(map, data);
+        });
+
+        d3.json('https://agentesofia.herokuapp.com/api/cases', function(data) {
+          console.log(data);
+          setCases(map, data);1
+        });
+      }
+      var infowindows = [];
+      var i = 0;
+      function setCases(map, data) {
+        var image_case = 'img/markerdh_p.png';
+        
+        data.forEach(element => {
+          console.log(element);
+
+          var location = new google.maps.LatLng(element.lat, element.long);
+          var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            icon: image_case,
+            id: i
+          });
+          element.description = element.description || '';
+          var contentString = showDetailCase('', element.description, element.image, element.temporal_occurrence);
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          infowindows.push(infowindow);
+          i++;
+
+          marker.addListener('click', function() {
+            infowindows.forEach(infoWin => {
+              infoWin
+              .close();
+            });
+            infowindows[marker.id].open(map, marker);
+          });
+        });
+      }
+
+      function setMarkers(map, places) {
+        places.forEach(place => {
+          insertPlace(place);
+        });
+      }
+
+      function insertPlace(place) {
+        var geocoder    = new google.maps.Geocoder();
+        var selLocLat   = 0;
+        var selLocLng   = 0;
+        geocoder.geocode({'address': place.name + ' São Paulo'}, function(results, status) {
+            if (status === 'OK') {
+              selLocLat   = results[0].geometry.location.lat();
+              selLocLng   = results[0].geometry.location.lng();
+              var pyrmont = new google.maps.LatLng(selLocLat, selLocLng);
+              var marker = new google.maps.Marker({
+                position: pyrmont,
+                map: map,
+                icon: image
+              });
+
+              var contentString = showDetailMarker(place.name, '');
+              var infowindow = new google.maps.InfoWindow({
+                content: contentString
+              });
+
+              marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                // $("#detail").toggle( "slow", function() {
+                //   console.log('cliquei em uma escola');
+                // });
+              });
+            }
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABY_N-4BUhdLzaX_L6ItYtquA3SuCzGxY&callback=initMap"
+    async defer></script>
+  </body>
+</html>

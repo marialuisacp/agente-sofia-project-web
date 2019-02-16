@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html * {
+  font-family: Lato, sans-serif;
+}
+
+#header {
+  /* background-color: #00aef0; */
+  background-color: #336666;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 99;
+  bottom: 0;
+}
+
+#header .logo {
+  max-width: 100px;
+  margin: 5px auto;
+  display: block;
+}
+
+#header .menu {
+  display: block;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
+#header .menu a {
+  color: #fff;
+  text-decoration: none
+}
+
+#map {
+  height: 100%;
+}
+
+#detail {
+  display: none;
+  position: absolute;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  padding-top: 150px;
+}
+
+
+#page-about {
+  /* background-color: #00a5e4; */
+  background-color: #336666;
+  color: #fff;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 99;
+  bottom: 0;
+  max-height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background-image: url(img/banner4.png);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: right;   
+}
+#page-about #about {
+  position: relative;
+  min-height: 200px;
+  color: #fff;
+  text-decoration: none;
+  padding: 80px;
+  padding-top: 40px;
+  max-width: 40%;
+  margin-left: 100px;
+}
+
+#page-about #about h1 {
+  font-weight: lighter;
+  font-size: 20px;
+  font-family: Lato, sans-serif;
+}
+
+#page-about #about p, #page-about #about ul li {
+  font-weight: lighter;
+  font-size: 14px;
+  text-decoration: none
+}
+
+.img-case {
+  max-width: 120px !important;
+  display: block;
+  margin: 10px auto
+}
+
+.date {
+  font-style: italic
+}
+.contact {
+  
+}
+
+.contact img {
+  width: 30px;
+}
