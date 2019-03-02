@@ -6,5 +6,7 @@ Além disso desenvolvemos uma aplicação web que exibe os dados enviados pelo c
 
 O back-end da aplicação se encontra do repositório [agente-sofia-api](https://github.com/marialuisacp/agente-sofia-api).
 
-![Imagem do projeto ](http://github.com/marialuisacp/agente-sofia-project-web/46_2.png)
+![Imagem do projeto ](46_1.PNG)
+![Imagem do projeto ](46_2.png)
+![Imagem do projeto ](46_3.PNG)
       
