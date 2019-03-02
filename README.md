@@ -5,3 +5,6 @@ Neste projeto fizemos uma assistente social virtual. Ela conversa com as pessoas
 Além disso desenvolvemos uma aplicação web que exibe os dados enviados pelo chat em um mapa.
 
 O back-end da aplicação se encontra do repositório [agente-sofia-api](https://github.com/marialuisacp/agente-sofia-api).
+
+![Imagem do projeto ](http://github.com/marialuisacp/agente-sofia-project-web/46_2.png)
+      
