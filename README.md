@@ -8,6 +8,6 @@ Fizemos uma assistente social virtual chamada Sofia. Ela conversa com as pessoas
 
 O back-end da aplicação se encontra do repositório [agente-sofia-api](https://github.com/marialuisacp/agente-sofia-api).
 
-![Imagem do projeto ](img/img_1.png)
+![Imagem do projeto ](img/img_1.PNG)
       
 Este projeto foi desenvolvido com [Hugo Iuri](https://github.com/hugoiuri), [Karine Paz Fagundes](https://github.com/kpazfagundes) e [Estela Kanashiki](https://www.linkedin.com/in/estela-kanashiki-1714073a/) em fevereiro de 2019 na CPBR12 em São Paulo.
